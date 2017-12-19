@@ -21,6 +21,8 @@
   "build": {
     "appId": "org.fll.utf8-utilty",
     "target": "portable",
+    "artifactName": "UTF-8 Converter Utility v${version}.${ext}",
+    "icon":"Icon.ico",
     "win": {
       "target": [
         {
