@@ -1,16 +1,37 @@
 {
   "name": "utf-8_converter_utility",
   "version": "1.0.0",
-  "description": "",
+  "description": "UTF-8 Converter Utility",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ."
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
   },
   "author": "Tal Taub",
   "license": "ISC",
   "dependencies": {
-    "electron": "^1.7.10",
     "electron-debug": "^1.4.0"
+  },
+  "devDependencies": {
+    "electron": "^1.7.10",
+    "electron-builder": "^19.49.0"
+  },
+  "build": {
+    "appId": "org.fll.utf8-utilty",
+    "target": "portable",
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ]
+    }
   }
 }
+
