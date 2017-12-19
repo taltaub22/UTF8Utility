@@ -1,4 +1,5 @@
 const {app, BrowserWindow} = require('electron');
+require('electron-debug')({enabled: true});
 const path = require('path');
 const url = require('url');
 
@@ -13,7 +14,11 @@ function createWindow() {
         slashes: true
     }));
 
-    //win.webContents.openDevTools();
+    // Disable the menubar
+    win.setMenu(null);
+
+    // Setting the window title
+    win.setTitle('UTF-8 Converter Utility');
 
     win.on('closed', () => {
         win = null

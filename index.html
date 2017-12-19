@@ -2,12 +2,20 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Hello World!</title>
+    <title>UFT-8 Converter Utility</title>
+    <script src="Convert.js"></script>
 </head>
 <body>
-<h1>Hello World!</h1>
-We are using node <script>document.write(process.versions.node)</script>,
-Chrome <script>document.write(process.versions.chrome)</script>,
-and Electron <script>document.write(process.versions.electron)</script>.
+<h3>Please enter a path to convert</h3>
+<input type="text" name="path" id="path">
+<button type="button" onclick="convert()">Convert</button>
+
+<script>
+    function convert() {
+        let path = document.getElementById("path");
+        ConvertPath(path.value);
+    }
+</script>
+
 </body>
 </html>

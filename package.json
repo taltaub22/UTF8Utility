@@ -10,6 +10,7 @@
   "author": "Tal Taub",
   "license": "ISC",
   "dependencies": {
-    "electron": "^1.7.10"
+    "electron": "^1.7.10",
+    "electron-debug": "^1.4.0"
   }
 }
