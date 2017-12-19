@@ -4,12 +4,22 @@
     <meta charset="UTF-8">
     <title>UFT-8 Converter Utility</title>
     <script src="Convert.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="lib/bootstrap-reboot.min.css">
+    <link rel="stylesheet" type="text/css" href="lib/bootstrap-grid.min.css">
+    <link rel="stylesheet" type="text/css" href="lib/bootstrap.min.css">
 </head>
 <body>
-<h3>Please enter a path to convert</h3>
-<input type="text" name="path" id="path">
-<button type="button" onclick="convert()">Convert</button>
 
+<div class="col-10 offset-1">
+    <h3>Please enter a path to convert</h3>
+    <input type="text" name="path" id="path" class="form-control">
+    <button type="button" onclick="convert()"
+            class="btn btn-success"
+            style="margin-top: 1em;">
+        Convert
+    </button>
+</div>
 <script>
     function convert() {
         let path = document.getElementById("path");

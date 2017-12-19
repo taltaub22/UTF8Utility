@@ -11,10 +11,22 @@ function ConvertPath(path) {
             }
 
             if (stats.isDirectory()) {
-                convertFolder(path);
+                try {
+                    convertFolder(path);
+                } catch (err) {
+                    alert("Error while converting files!");
+                    console.log(err);
+                }
             } else {
-                convertFile(path);
+                try {
+                    convertFile(path);
+                } catch (err) {
+                    alert("Error while converting file!");
+                    console.log(err);
+                }
             }
+
+            alert("Folder Successfully converted!")
         });
     }
 }
