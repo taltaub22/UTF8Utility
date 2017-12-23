@@ -1,4 +1,7 @@
 const fs = require('fs');
+const jschardet = require("jschardet");
+const iconvlite = require('iconv-lite');
+
 
 function ConvertPath(path) {
     if (!path) {
@@ -52,17 +55,26 @@ function convertFolder(path) {
 
 function convertFile(path) {
     console.log('Convert file', path);
-    fs.readFile(path, {
+    let file = fs.readFileSync(path);
+    let enc = jschardet.detect(file);
+    try {
+        let content = readFileSync_encoding(path, enc.encoding);
+    } catch (e) {
+        throw e;
+    }
+    fs.writeFile(path, content, {
         encoding: 'utf8'
-    }, function (error, content) {
+    }, function (error) {
         if (error) throw error;
-
-        fs.writeFile(path, content, {
-            encoding: 'utf8'
-        }, function (error) {
-            if (error) throw error;
-
-            console.log('Successfully converted', path)
-        })
+        console.log('Successfully converted', path)
     })
+}
+
+function readFileSync_encoding(filename, encoding) {
+    fs.readFileSync(filename, function (err, content) {
+        if (err) throw err;
+        return iconvlite.decode(content, encoding);
+    });
+    throw "Can't read file";
+
 }

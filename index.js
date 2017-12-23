@@ -5,8 +5,12 @@ const url = require('url');
 
 let win;
 
+function getIcon() {
+    return path.join(__dirname, 'icon.ico')
+}
+
 function createWindow() {
-    win = new BrowserWindow({width: 800, height: 300, icon: "Icon.ico"});
+    win = new BrowserWindow({width: 800, height: 300, icon: getIcon()});
 
     win.loadURL(url.format({
         pathname: path.join(__dirname, 'index.html'),

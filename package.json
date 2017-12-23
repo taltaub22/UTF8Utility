@@ -12,7 +12,9 @@
   "author": "Tal Taub",
   "license": "ISC",
   "dependencies": {
-    "electron-debug": "^1.4.0"
+    "electron-debug": "^1.4.0",
+    "iconv-lite": "^0.4.19",
+    "jschardet": "^1.6.0"
   },
   "devDependencies": {
     "electron": "^1.7.10",
@@ -22,7 +24,7 @@
     "appId": "org.fll.utf8-utilty",
     "target": "portable",
     "artifactName": "UTF-8 Converter Utility v${version}.${ext}",
-    "icon":"Icon.ico",
+    "icon": "Icon.ico",
     "win": {
       "target": [
         {
@@ -36,4 +38,3 @@
     }
   }
 }
-
