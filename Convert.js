@@ -16,20 +16,21 @@ function ConvertPath(path) {
             if (stats.isDirectory()) {
                 try {
                     convertFolder(path);
+                    alert("Folder Successfully converted!")
                 } catch (err) {
                     alert("Error while converting files!");
-                    console.log(err);
+                    console.error(err);
                 }
             } else {
                 try {
                     convertFile(path);
                 } catch (err) {
                     alert("Error while converting file!");
-                    console.log(err);
+                    console.error(err);
                 }
             }
 
-            alert("Folder Successfully converted!")
+
         });
     }
 }
@@ -59,22 +60,23 @@ function convertFile(path) {
     let enc = jschardet.detect(file);
     try {
         let content = readFileSync_encoding(path, enc.encoding);
+        fs.writeFile(path, content, {
+            encoding: 'utf8'
+        }, function (error) {
+            if (error) throw error;
+            console.log('Successfully converted', path)
+        });
     } catch (e) {
         throw e;
     }
-    fs.writeFile(path, content, {
-        encoding: 'utf8'
-    }, function (error) {
-        if (error) throw error;
-        console.log('Successfully converted', path)
-    })
+
 }
 
 function readFileSync_encoding(filename, encoding) {
-    fs.readFileSync(filename, function (err, content) {
-        if (err) throw err;
-        return iconvlite.decode(content, encoding);
-    });
-    throw "Can't read file";
+    let content = fs.readFileSync(filename);
+    if(content.name){
+        throw "Can't read file";
+    }
+    return iconvlite.decode(content, encoding);
 
 }

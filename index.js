@@ -21,6 +21,8 @@ function createWindow() {
     // Disable the menubar
     win.setMenu(null);
 
+    app.commandLine.appendSwitch('remote-debugging-port', '9222');
+
     // Setting the window title
     win.setTitle('UTF-8 Converter Utility');
 
