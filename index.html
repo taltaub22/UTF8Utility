@@ -14,7 +14,10 @@
 <div class="col-10 offset-1">
     <h3>Please enter a path to convert</h3>
     <label>Can be a folder or a file</label>
-    <input type="text" name="path" id="path" class="form-control">
+    <input type="file" name="path" id="path"  class="form-control">
+    <input type="checkbox" onchange="toggleFolderOrFile()" id="folderOrFile">
+    <label for="folderOrFile">Select a Folder</label>
+    <br>
     <button type="button" onclick="convert()"
             class="btn btn-success"
             style="margin-top: 1em;">
@@ -22,9 +25,14 @@
     </button>
 </div>
 <script>
+    let folderOrSingle = false;
+    function toggleFolderOrFile() {
+        folderOrSingle = !folderOrSingle;
+        document.getElementById("path").webkitdirectory = folderOrSingle;
+    }
     function convert() {
-        let path = document.getElementById("path");
-        ConvertPath(path.value);
+        let path = document.getElementById("path").files[0].path;
+        ConvertPath(path);
     }
 </script>
 
