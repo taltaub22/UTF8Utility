@@ -61,7 +61,10 @@ function convertFile(path) {
     let enc = jschardet.detect(file);
     try {
         let content = readFileSync_encoding(path, enc.encoding);
-        fs.writeFile(path, content, {
+        let pathSplit = path.split('.');
+        let extention = pathSplit.pop();
+        let oldName = pathSplit.pop()
+        fs.writeFile(oldName+"_converted."+extention, content, {
             encoding: 'utf8'
         }, function (error) {
             if (error) throw error;
