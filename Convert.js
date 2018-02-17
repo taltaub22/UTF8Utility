@@ -16,19 +16,21 @@ function ConvertPath(path) {
             if (stats.isDirectory()) {
                 try {
                     convertFolder(path);
+                    alert("Folder Successfully converted!")
                 } catch (err) {
                     alert("Error while converting files!");
                     console.error(err);
                 }
-                alert("Folder Successfully converted!")
+
             } else {
                 try {
                     convertFile(path);
+                    alert("File Successfully converted!")
                 } catch (err) {
-                    alert("Error while converting file!");
                     console.error(err);
+                    alert("Error while converting file! \n" + err);
                 }
-                alert("File Successfully converted!")
+
             }
 
 
